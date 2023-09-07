@@ -1,0 +1,60 @@
+
+@font-face {
+    font-family: outfit;
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url(/fonts/Outfit-regular_wght.ttf) format(wolf);
+
+}
+
+@font-face {
+    font-family: outfit;
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url(/fonts/Outfit-bold_wght.ttf) format(wolf);
+
+}
+::before
+::after {
+   box-sizing: border-box;
+}
+body {
+    margin: unset;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+    background-color: lightgray;
+    font-family: outfit;
+    min-height: 100vh;
+    font-size: 15px;
+    display: grid;
+    place-items: center;
+    color: var(Darkblue);
+}
+p {
+    line-height: 1.3;
+    color: var(blue);
+    margin: 1.075em; 
+
+}
+
+img {
+    border-radius: 0.675rem;
+}
+main {
+    background-color: white;
+    max-width: 250px;
+    padding: 1.075rem;
+    border-radius: 1.35rem;
+    box-shadow: 0 1.6rem 1.6rem hsla(hue, saturation, lightness, alpha);
+    text-align: center;
+    margin: 1.075rem;
+}
+h1 {
+    font-size: 1.375rem;
+    line-height: 1.275;
+    margin-top: 1.1em;
+
+
+}
