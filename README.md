@@ -1,6 +1,6 @@
 # E-Commerce Mobile Application
 
-A comprehensive cross-platform e-commerce mobile application built with Expo React Native, featuring modern UI, secure payments, real-time order tracking, and a complete shopping experience.
+A comprehensive cross-platform e-commerce mobile application built with **Expo React Native**, featuring modern UI, secure payments, real-time order tracking, and a complete shopping experience.
 
 ## 🎯 Project Objectives
 
@@ -22,7 +22,7 @@ A comprehensive cross-platform e-commerce mobile application built with Expo Rea
 - ✅ **Push Notifications** - Order updates and promotional notifications
 
 ### Technical Features
-- 📱 Cross-platform (iOS & Android)
+- 📱 Cross-platform (iOS & Android) with **Expo CLI**
 - 🎨 Modern UI with NativeBase components
 - 🔄 State management with Redux Toolkit
 - 💾 Offline support with Redux Persist
@@ -33,8 +33,8 @@ A comprehensive cross-platform e-commerce mobile application built with Expo Rea
 ## 🛠 Tech Stack
 
 ### Frontend
-- **React Native** - Cross-platform mobile development
-- **Expo** - Development platform and tools
+- **Expo React Native** - Cross-platform mobile development
+- **Expo CLI** - Development platform and tools
 - **TypeScript** - Type-safe development
 - **NativeBase** - UI component library
 - **React Navigation** - Navigation solution
@@ -56,33 +56,14 @@ A comprehensive cross-platform e-commerce mobile application built with Expo Rea
 - **React Native Maps** - Location services
 - **Axios** - HTTP client
 
-## 📱 Screens
-
-### Authentication
-- Login Screen
-- Registration Screen
-- Forgot Password Screen
-
-### Main Application
-- Home/Dashboard Screen
-- Product Categories Screen
-- Product Search Screen
-- Product Details Screen
-- Shopping Cart Screen
-- Checkout Screen
-- Order Success Screen
-- Order Tracking Screen
-- User Profile Screen
-- Settings Screen
-
-## 🚀 Getting Started
+## 🚀 Getting Started with Expo CLI
 
 ### Prerequisites
-- Node.js (v16 or higher)
-- npm or yarn
-- Expo CLI
-- Android Studio (for Android development)
-- Xcode (for iOS development - macOS only)
+- **Node.js** (v16 or higher)
+- **npm** or **yarn**
+- **Expo CLI** - Install globally: `npm install -g @expo/cli`
+- **EAS CLI** - Install globally: `npm install -g eas-cli`
+- **Expo Go app** on your mobile device (for testing)
 
 ### Installation
 
@@ -99,7 +80,13 @@ A comprehensive cross-platform e-commerce mobile application built with Expo Rea
    yarn install
    ```
 
-3. **Set up environment variables**
+3. **Install Expo CLI globally (if not already installed)**
+   ```bash
+   npm install -g @expo/cli
+   npm install -g eas-cli
+   ```
+
+4. **Set up environment variables**
    Create a `.env` file in the root directory:
    ```env
    FIREBASE_API_KEY=your_firebase_api_key
@@ -111,147 +98,216 @@ A comprehensive cross-platform e-commerce mobile application built with Expo Rea
    STRIPE_PUBLISHABLE_KEY=pk_test_your_stripe_key
    ```
 
-4. **Configure Firebase**
+5. **Configure Firebase**
    - Create a Firebase project at [Firebase Console](https://console.firebase.google.com)
    - Enable Authentication, Firestore, and Messaging
    - Update `src/config/firebase.ts` with your Firebase config
 
-5. **Configure Stripe**
+6. **Configure Stripe**
    - Create a Stripe account at [Stripe Dashboard](https://dashboard.stripe.com)
    - Get your publishable key and update the configuration
 
-6. **Start the development server**
-   ```bash
-   npm start
-   # or
-   expo start
-   ```
+### 📱 Running the App with Expo CLI
 
-7. **Run on device/simulator**
-   - Press `a` for Android emulator
-   - Press `i` for iOS simulator
-   - Scan QR code with Expo Go app for physical device
+#### Development Mode
+```bash
+# Start the Expo development server
+expo start
+
+# Or use specific commands:
+npm start          # Start Expo dev server
+npm run android    # Run on Android emulator/device
+npm run ios        # Run on iOS simulator/device
+npm run web        # Run on web browser
+```
+
+#### Using Expo Go App
+1. Install **Expo Go** from App Store (iOS) or Google Play (Android)
+2. Run `expo start` in your terminal
+3. Scan the QR code with your device camera (iOS) or Expo Go app (Android)
+
+#### Using Simulators/Emulators
+```bash
+# For iOS Simulator (macOS only)
+expo start --ios
+
+# For Android Emulator
+expo start --android
+
+# For web browser
+expo start --web
+```
+
+### 🏗️ Building for Production with EAS
+
+#### Setup EAS Build
+```bash
+# Login to Expo account
+eas login
+
+# Configure EAS build
+eas build:configure
+```
+
+#### Build Commands
+```bash
+# Build for Android (APK for testing)
+eas build --platform android --profile preview
+
+# Build for iOS (TestFlight)
+eas build --platform ios --profile preview
+
+# Build for Production
+eas build --platform all --profile production
+```
+
+#### Submit to App Stores
+```bash
+# Submit to Google Play Store
+eas submit --platform android
+
+# Submit to App Store
+eas submit --platform ios
+```
 
 ## 📁 Project Structure
 
 ```
-src/
-├── components/          # Reusable UI components
-├── config/             # Configuration files
-├── navigation/         # Navigation setup
-├── screens/           # Screen components
-│   ├── auth/         # Authentication screens
-│   └── ...           # Other screens
-├── services/          # API services
-├── store/            # Redux store and slices
-├── theme/            # UI theme configuration
-├── types/            # TypeScript type definitions
-└── utils/            # Utility functions
+├── App.tsx                 # Main app component
+├── app.json               # Expo configuration
+├── eas.json               # EAS build configuration
+├── package.json           # Dependencies and scripts
+├── tsconfig.json          # TypeScript configuration
+├── babel.config.js        # Babel configuration
+├── metro.config.js        # Metro bundler configuration
+├── assets/                # Static assets (images, fonts)
+├── src/
+│   ├── components/        # Reusable UI components
+│   ├── config/           # Configuration files
+│   ├── navigation/       # Navigation setup
+│   ├── screens/          # Screen components
+│   │   ├── auth/        # Authentication screens
+│   │   └── ...          # Other screens
+│   ├── services/         # API services
+│   ├── store/           # Redux store and slices
+│   ├── theme/           # UI theme configuration
+│   ├── types/           # TypeScript type definitions
+│   └── utils/           # Utility functions
+└── .env.example          # Environment variables template
 ```
 
-## 🔧 Configuration
+## 🔧 Expo CLI Specific Configuration
 
-### Firebase Setup
-1. Create a new Firebase project
-2. Enable the following services:
-   - Authentication (Email/Password, Google, Apple)
-   - Cloud Firestore
-   - Cloud Messaging
-   - Analytics (optional)
+### app.json Configuration
+The `app.json` file contains all Expo-specific configuration:
+- App metadata (name, version, icon)
+- Platform-specific settings
+- Permissions and capabilities
+- Build and deployment settings
 
-### Stripe Setup
-1. Create a Stripe account
-2. Configure payment methods
-3. Set up webhooks for order processing
-4. Update the publishable key in the app
+### EAS Build Configuration
+The `eas.json` file configures build profiles:
+- **development**: For development builds
+- **preview**: For testing (APK/TestFlight)
+- **production**: For app store releases
 
-### Push Notifications
-1. Configure Firebase Cloud Messaging
-2. Set up APNs for iOS (requires Apple Developer account)
-3. Update notification permissions in app.json
+### Metro Configuration
+The `metro.config.js` configures the bundler for:
+- Asset handling
+- Module resolution
+- Transformation rules
 
-## 🚀 Deployment
+## 🚀 Deployment with Expo
 
-### Building for Production
-
-**Android (APK)**
+### Development Deployment
 ```bash
-expo build:android
+# Publish to Expo's CDN (for Expo Go)
+expo publish
+
+# Create development build
+eas build --profile development
 ```
 
-**iOS (IPA)**
+### Production Deployment
 ```bash
-expo build:ios
+# Build for app stores
+eas build --profile production
+
+# Submit to stores
+eas submit
 ```
 
-**App Store/Play Store**
+### OTA Updates
 ```bash
-expo upload:android
-expo upload:ios
+# Push over-the-air updates
+expo publish
+
+# Or using EAS Update
+eas update
 ```
 
-### Environment Configuration
-- Development: Use test keys and sandbox environments
-- Production: Use live keys and production environments
-
-## 🧪 Testing
+## 🧪 Testing with Expo
 
 ```bash
 # Run unit tests
 npm test
 
-# Run integration tests
-npm run test:integration
+# Test on multiple devices with Expo Go
+expo start
+# Scan QR code on different devices
 
-# Run e2e tests
-npm run test:e2e
+# Test builds
+eas build --profile preview
 ```
 
-## 📚 Documentation
+## 📚 Expo CLI Commands Reference
 
-### Key Components
-- **AuthNavigator** - Handles authentication flow
-- **MainTabNavigator** - Main app navigation with bottom tabs
-- **ProductService** - API calls for product management
-- **AuthService** - Authentication and user management
-- **OrderService** - Order creation and tracking
+### Essential Commands
+```bash
+expo --help              # Show all commands
+expo start               # Start development server
+expo start --tunnel      # Start with tunnel for external access
+expo build:android       # Build Android APK (legacy)
+expo build:ios          # Build iOS IPA (legacy)
+expo publish            # Publish to Expo's CDN
+expo eject              # Eject to bare React Native (not recommended)
+```
 
-### State Management
-- **authSlice** - User authentication state
-- **cartSlice** - Shopping cart management
-- **productSlice** - Product catalog and search
-- **orderSlice** - Order management and tracking
-- **userSlice** - User preferences and data
+### EAS Commands
+```bash
+eas login               # Login to Expo account
+eas build              # Build with EAS Build
+eas submit             # Submit to app stores
+eas update             # Send OTA updates
+eas branch             # Manage update branches
+```
 
 ## 🔐 Security Features
 
 - Secure authentication with Firebase
-- Encrypted data storage
+- Encrypted data storage with Expo SecureStore
 - PCI-compliant payment processing with Stripe
 - Input validation and sanitization
-- Rate limiting and abuse prevention
 - Secure API communication
+- App signing and integrity checks
 
-## 🌟 Future Enhancements
+## 🌟 Expo-Specific Advantages
 
-- [ ] Dark mode support
-- [ ] Multi-language support
-- [ ] Augmented Reality product preview
-- [ ] Voice search functionality
-- [ ] Loyalty program integration
-- [ ] Advanced analytics dashboard
-- [ ] AI-powered product recommendations
-- [ ] Social sharing features
-- [ ] Live chat support
-- [ ] Barcode scanning
+- **Fast Development**: Hot reloading and live updates
+- **Easy Testing**: Test on real devices with Expo Go
+- **No Native Setup**: No need for Xcode/Android Studio for development
+- **OTA Updates**: Push updates without app store approval
+- **Rich Ecosystem**: Pre-built components and APIs
+- **Easy Deployment**: Simplified build and submission process
 
 ## 🤝 Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+3. Test with Expo Go app
+4. Commit your changes (`git commit -m 'Add some amazing feature'`)
+5. Push to the branch (`git push origin feature/amazing-feature`)
+6. Open a Pull Request
 
 ## 📄 License
 
@@ -261,17 +317,17 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 For support and questions:
 - Email: support@ecommerce-app.com
-- Documentation: [docs.ecommerce-app.com](https://docs.ecommerce-app.com)
+- Expo Documentation: [docs.expo.dev](https://docs.expo.dev)
 - Issues: [GitHub Issues](https://github.com/your-repo/issues)
 
 ## 🙏 Acknowledgments
 
-- React Native community for excellent libraries
 - Expo team for the amazing development platform
+- React Native community for excellent libraries
 - Firebase for backend services
 - Stripe for payment processing
 - NativeBase for UI components
 
 ---
 
-**Built with ❤️ for modern e-commerce experiences**
+**Built with ❤️ using Expo React Native CLI**

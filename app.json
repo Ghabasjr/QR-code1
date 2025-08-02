@@ -9,32 +9,42 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#0284c7"
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.ecommerce.app"
+      "bundleIdentifier": "com.ecommerce.app",
+      "buildNumber": "1.0.0",
+      "infoPlist": {
+        "NSCameraUsageDescription": "This app uses camera to scan products and QR codes",
+        "NSLocationWhenInUseUsageDescription": "This app uses location to provide delivery tracking and nearby stores",
+        "NSMicrophoneUsageDescription": "This app may use microphone for voice search"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#0284c7"
       },
       "package": "com.ecommerce.app",
+      "versionCode": 1,
       "permissions": [
         "CAMERA",
         "ACCESS_FINE_LOCATION",
         "ACCESS_COARSE_LOCATION",
         "RECEIVE_BOOT_COMPLETED",
         "VIBRATE",
-        "WAKE_LOCK"
+        "WAKE_LOCK",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
       ]
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
     },
     "plugins": [
       "expo-location",
@@ -43,9 +53,31 @@
         "expo-notifications",
         {
           "icon": "./assets/notification-icon.png",
-          "color": "#ffffff"
+          "color": "#0284c7",
+          "sounds": ["./assets/sounds/notification.wav"]
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 34,
+            "targetSdkVersion": 34,
+            "buildToolsVersion": "34.0.0"
+          },
+          "ios": {
+            "deploymentTarget": "13.0"
+          }
         }
       ]
-    ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "your-eas-project-id"
+      }
+    }
   }
 }
